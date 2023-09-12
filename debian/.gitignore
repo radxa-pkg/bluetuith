@@ -1,0 +1,8 @@
+/.debhelper
+/debhelper-build-stamp
+/files
+/bluetuith/
+/*.debhelper.log
+/*.postrm.debhelper
+/*.substvars
+/tmp/

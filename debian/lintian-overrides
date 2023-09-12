@@ -1,0 +1,8 @@
+# Prebuilt binary
+bluetuith: statically-linked-binary
+
+# We no Debian
+bluetuith: initial-upload-closes-no-bugs
+
+# Upstream does not provide this
+bluetuith: no-manual-page
