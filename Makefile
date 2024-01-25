@@ -3,7 +3,7 @@ PREFIX ?= /usr
 BINDIR ?= $(PREFIX)/bin
 LIBDIR ?= $(PREFIX)/lib
 MANDIR ?= $(PREFIX)/share/man
-VERSION := 0.1.7
+VERSION := 0.2.0
 
 .PHONY: all
 all: build

@@ -1,3 +1,10 @@
+bluetuith (0.2.0-1) stable; urgency=medium
+
+  [ ZHANG Yuntian ]
+  * fix:remove unused code
+
+ -- "Radxa Computer Co., Ltd" <dev@radxa.com>  Thu, 25 Jan 2024 14:53:47 +0800
+
 bluetuith (0.1.7-1) stable; urgency=medium
 
   * Initial release
