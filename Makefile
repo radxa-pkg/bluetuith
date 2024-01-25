@@ -38,18 +38,6 @@ bluetuith_$(VERSION)_Linux_arm64.tar.gz:
 bluetuith: bluetuith_$(VERSION)_Linux_arm64.tar.gz
 	tar xvf bluetuith_$(VERSION)_Linux_arm64.tar.gz
 
-RKNNLITE2		:=	rknnlite2/rknn_toolkit_lite2-$(VERSION)/rknnlite
-.PHONY: patch_rknnlite2
-patch_rknnlite2: rknnlite2
-	patchelf --remove-rpath $(wildcard $(RKNNLITE2)/api/*.so) $(wildcard $(RKNNLITE2)/api/npu_config/*.so) $(wildcard $(RKNNLITE2)/utils/*.so)
-
-rknnlite2/rknn_toolkit_lite2-$(VERSION)/setup.py: rknnlite2.setup.py patch_rknnlite2
-	sed "s/__VERSION__/$(VERSION)/g" "$<" > "$@"
-
-rknnlite2/rknn_toolkit_lite2-$(VERSION)/rknnlite.egg-info: rknnlite2/rknn_toolkit_lite2-$(VERSION)/setup.py
-	cd rknnlite2/rknn_toolkit_lite2-$(VERSION) && \
-	python3 setup.py bdist_egg
-
 #
 # Clean
 #
@@ -76,4 +64,4 @@ dch: debian/changelog
 
 .PHONY: deb
 deb: debian
-	debuild --set-envvar DEB_RKNN_VERSION="$(VERSION)" --no-lintian --lintian-hook "lintian --fail-on error,warning --suppress-tags bad-distribution-in-changes-file -- %p_%v_*.changes" --no-sign -b -aarm64 -Pcross
+	debuild --no-lintian --lintian-hook "lintian --fail-on error,warning --suppress-tags bad-distribution-in-changes-file -- %p_%v_*.changes" --no-sign -b -aarm64 -Pcross
